@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card glass-panel border-0 rounded-4 overflow-hidden mt-4">
+            <div class="card-header text-white text-center py-4">
+                <h4 class="mb-0 fw-bold">Voter Authentication</h4>
+                <p class="small mb-0 mt-1 opacity-75">Please verify your identity to proceed</p>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <form action="{{ url_for('verify_id') }}" method="POST">
+                    <div class="mb-5">
+                        <label for="aadhaar_id" class="form-label fw-bold text-secondary">Aadhaar ID (12 Digits)</label>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text bg-light"><i class="bi bi-credit-card-2-front"></i></span>
+                            <input type="text" class="form-control" id="aadhaar_id" name="aadhaar_id" pattern="\d{12}" title="12 digit Aadhaar ID" placeholder="e.g. 123456789012" required autofocus>
+                        </div>
+                        <p class="small text-muted mt-2">Your details will be fetched for verification in the next step.</p>
+                    </div>
+                    <button type="submit" class="btn btn-premium btn-lg w-100 rounded-pill py-3 fw-bold shadow-sm">
+                        Fetch Voter Details
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('admin_login') }}" class="text-muted text-decoration-none small"><i class="bi bi-gear-fill me-1"></i> Admin Portal</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
